@@ -1,0 +1,46 @@
+<div class="page-container">
+
+  <div class="card">
+
+    <h2 class="neon-text">Registro</h2>
+
+    <form [formGroup]="form" (ngSubmit)="registrarse()">
+
+      <label>Nombre</label>
+      <input
+        type="text"
+        formControlName="nombre"
+        placeholder="Tu nombre"
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="ejemplo@mail.com"
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="••••••"
+      />
+
+      <button type="submit">
+        Crear cuenta
+      </button>
+
+      <div
+        class="text-danger"
+        *ngIf="errorRegistro">
+
+        El email ya está registrado
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

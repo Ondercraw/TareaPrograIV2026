@@ -1,0 +1,71 @@
+<nav>
+
+  <div class="nav-container">
+
+    <!-- IZQUIERDA -->
+    <div class="nav-left">
+
+      <a routerLink="/bienvenida" class="nav-btn">
+        Inicio
+      </a>
+
+      <span class="divider">|</span>
+
+      <a routerLink="/sobre-mi" class="nav-btn">
+        Sobre mí
+      </a>
+
+
+      <!-- SOLO SI NO ESTA LOGUEADO -->
+
+      <ng-container *ngIf="!nombreUsuario">
+
+        <span class="divider">|</span>
+
+        <a routerLink="/login" class="nav-btn">
+          Login
+        </a>
+
+        <span class="divider">|</span>
+
+        <a routerLink="/registro" class="nav-btn">
+          Registro
+        </a>
+
+      </ng-container>
+
+    </div>
+
+
+
+    <!-- CENTRO (SIEMPRE) -->
+    <div class="nav-center neon-text">
+
+      {{nombreUsuario}}
+
+    </div>
+
+
+
+    <!-- DERECHA -->
+    <div class="nav-right">
+
+      <!-- SOLO SI ESTA LOGUEADO -->
+
+      <button
+        *ngIf="nombreUsuario"
+        (click)="logout()"
+        class="nav-btn">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<router-outlet></router-outlet>

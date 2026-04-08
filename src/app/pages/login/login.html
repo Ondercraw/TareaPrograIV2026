@@ -1,0 +1,39 @@
+<div class="page-container">
+
+  <div class="card">
+
+    <h2 class="neon-text">Login</h2>
+
+    <form [formGroup]="form" (ngSubmit)="ingresar()">
+
+      <label>Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="ejemplo@mail.com"
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="••••••"
+      />
+
+      <button type="submit">
+        Ingresar
+      </button>
+
+      <div
+        class="text-danger"
+        *ngIf="errorLogin">
+
+        Email o contraseña incorrectos
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
