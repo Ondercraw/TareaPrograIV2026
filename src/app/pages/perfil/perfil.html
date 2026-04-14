@@ -1,0 +1,25 @@
+<section class="page-container profile-page">
+  <h2 class="neon-text">Perfil</h2>
+
+  <p class="status-text" *ngIf="cargando">Cargando datos de GitHub...</p>
+  <p class="status-text error" *ngIf="error">{{ mensajeError }}</p>
+
+  <article *ngIf="usuarioGithub" class="neon-card profile-card">
+    <div class="profile-layout">
+      <img [src]="usuarioGithub.avatar_url" [alt]="usuarioGithub.login" class="avatar">
+      <div class="profile-content">
+        <h3>{{ usuarioGithub.name || usuarioGithub.login }}</h3>
+        <p class="username">@{{ usuarioGithub.login }}</p>
+        <p>{{ usuarioGithub.bio || 'Sin biografia cargada.' }}</p>
+        <p><strong>Repos publicos:</strong> {{ usuarioGithub.public_repos }}</p>
+        <p><strong>Seguidores:</strong> {{ usuarioGithub.followers }}</p>
+        <p><strong>Siguiendo:</strong> {{ usuarioGithub.following }}</p>
+        <p *ngIf="usuarioGithub.location"><strong>Ubicacion:</strong> {{ usuarioGithub.location }}</p>
+        <p *ngIf="usuarioGithub.company"><strong>Empresa:</strong> {{ usuarioGithub.company }}</p>
+        <a class="profile-link" [href]="usuarioGithub.html_url" target="_blank" rel="noopener noreferrer">
+          Ir a su perfil de GitHub
+        </a>
+      </div>
+    </div>
+  </article>
+</section>

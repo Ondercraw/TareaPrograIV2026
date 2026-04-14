@@ -1,19 +1,13 @@
-// src/app/app.routes.ts
-
 import { Routes } from '@angular/router';
-import { Login } from './pages/login/login';
-import { Registro } from './pages/registro/registro';
-import { Bienvenida } from './pages/bienvenida/bienvenida';
-import { Error } from './pages/error/error';
-import { SobreMi } from './pages/sobre-mi/sobre-mi';
+
 
 export const routes: Routes = [
-  { path: '', component: Bienvenida },
+  { path: '', loadComponent: () => import('./pages/bienvenida/bienvenida').then((m) => m.Bienvenida) },
 
-  { path: 'login', component: Login },
-  { path: 'registro', component: Registro },
-  { path: 'bienvenida', component: Bienvenida },
-  { path: 'sobre-mi', component: SobreMi },
+  { path: 'login', loadComponent: () => import('./pages/login/login').then((m) => m.Login) },
+  { path: 'registro', loadComponent: () => import('./pages/registro/registro').then((m) => m.Registro) },
+  { path: 'bienvenida', loadComponent: () => import('./pages/bienvenida/bienvenida').then((m) => m.Bienvenida) },
+  { path: 'perfil', loadComponent: () => import('./pages/perfil/perfil').then((m) => m.Perfil) },
 
-  { path: '**', component: Error }
+  { path: '**', loadComponent: () => import('./pages/error/error').then((m) => m.Error) }
 ];
